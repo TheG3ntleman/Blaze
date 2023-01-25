@@ -3,8 +3,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-
-typedef float numeric;
+#include "primitives.h"
 
 typedef enum exprType {
   CONSTANT,
@@ -22,11 +21,12 @@ typedef enum binOpType {
 typedef struct expr {
 
   exprType ptype;
+  numeric x;
+  char changed; // flag to indicate whether expr has changed or not.
   union {
     binOpType btype; 
   };
   union {
-    numeric x;
     struct expr **operands; 
   };
 
@@ -38,6 +38,7 @@ void deleteExpr(expr *exp);
 expr *makeZeroVariable();
 expr *makeVariable(numeric x);
 void set(numeric x, expr *var);
+void evalExpr(expr *exp);
 
 // Bin ops 
 

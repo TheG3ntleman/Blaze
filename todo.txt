@@ -1,1 +1,5 @@
 Adding ability to construct linear and algebraic expressions.
+Add evaluation function
+
+BETTER TODO THIS LATER: Restructure project to make it more modular
+

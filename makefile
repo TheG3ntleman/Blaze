@@ -1,7 +1,11 @@
 # Project config
 
-SOURCE_FILES = src/main.c src/blaze/core.c
-OBJECT_FILES = src/main.o src/blaze/core.o
+SOURCE_FILES = src/main.c \
+							 src/blaze/core.c \
+							 src/blaze/primitives.c
+OBJECT_FILES = src/main.o \
+							 src/blaze/core.o \
+							 src/blaze/primitives.o
 EXE_NAME = program
 
 # Compilation settings
