@@ -1,7 +1,7 @@
 # Project config
 
-SOURCE_FILES = src/main.c src/smathlib/core.c
-OBJECT_FILES = src/main.o src/smathlib/core.o
+SOURCE_FILES = src/main.c src/blaze/core.c
+OBJECT_FILES = src/main.o src/blaze/core.o
 EXE_NAME = program
 
 # Compilation settings
