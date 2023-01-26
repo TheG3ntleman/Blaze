@@ -1,36 +1,39 @@
 #include "evaluate.h"
+#include "fwdEvaluate.h"
 
 void evalExpr(expr *exp) {
-  switch (exp->ptype) {
+  switch (exp->type) {
 
-    case CONSTANT:
-      break;
     case SCALAR:
       break;
     case BIN_OP:
-      evalExpr(exp->operands[0]);
-      evalExpr(exp->operands[1]);
-      if (exp->operands[1]->changed == 0 && exp->operands[0]->changed == 0) {
-        //printf("Not re-evaluating.\n");
+      evalExpr(exp->data.operands[0]);
+      evalExpr(exp->data.operands[1]);
+      if (exp->data.operands[1]->changed == 0 && exp->data.operands[0]->changed == 0) {
+        printf("Not re-evaluating.\n");
         break;
       }
       exp->changed = 1;
-      switch (exp->btype) {
+      switch (exp->subtype.binary_operation_type) {
         case ADD:
-          exp->x = fwdAdd(exp->operands[0]->x, exp->operands[1]->x);
+          exp->value = fwdAdd(exp->data.operands[0]->value, exp->data.operands[1]->value);
           break;
         case SUBTRACT:
-          exp->x = fwdSub(exp->operands[0]->x, exp->operands[1]->x);
+          exp->value = fwdSub(exp->data.operands[0]->value, exp->data.operands[1]->value);
           break;
         case MULTIPLY:
-          exp->x = fwdMul(exp->operands[0]->x, exp->operands[1]->x);
+          exp->value = fwdMul(exp->data.operands[0]->value, exp->data.operands[1]->value);
+          break;
+        case DIVIDE:
+          printf("Called bro\n");
+          exp->value = fwdDiv(exp->data.operands[0]->value, exp->data.operands[1]->value);          
           break;
         case RAISE:
-          exp->x = fwdRaise(exp->operands[0]->x, exp->operands[1]->x);
+          exp->value = fwdRaise(exp->data.operands[0]->value, exp->data.operands[1]->value);
 
       };
-      exp->operands[0]->changed = 0;
-      exp->operands[1]->changed = 0;
+      exp->data.operands[0]->changed = 0;
+      exp->data.operands[1]->changed = 0;
       break;
   };
 }

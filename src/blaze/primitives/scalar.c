@@ -1,33 +1,43 @@
 #include "scalar.h"
 
 expr *makeConstant(numeric x) {
+  expr *constant = makeExpr();
+  constant->type = SCALAR;
+  constant->subtype.scalar_type = CONSTANT;
+  constant->changed = 1;
+  constant->value = x;
+  return constant; 
+}
+
+void setConstant(numeric x, expr *constant) {
+  if (constant->type == SCALAR) {
+    if (constant->subtype.scalar_type == CONSTANT) {
+      constant->value = x;
+      constant->changed = 1;
+    } else
+        reportError("Attempt to set non-constant scalar", "setConstant", 0);
+  } else
+      reportError("Attempt to set non-scalar value", "setConstant", 0);
+}
+
+expr *makeVariable(char *symbol) {
   expr *variable = makeExpr();
-  variable->ptype = CONSTANT;
+  variable->type = SCALAR;
+  variable->subtype.scalar_type = VARIABLE;
+  variable->value = 0;
   variable->changed = 0;
-  variable->x = x;
-  return variable; 
+  variable->data.symbol = symbol;
+  return variable;
 }
 
-expr *makeZeroScalar() {
-  expr *variable = makeExpr(); 
-  variable->ptype = SCALAR;
-  variable->x = 0;
-  return variable; 
+void setVariable(numeric x, expr *var) {
+  if (var->type == SCALAR) {
+    if (var->subtype.scalar_type == VARIABLE) {
+      var->value = x;
+      var->changed = 1;
+    } else
+        reportError("Attempt to set non-variable scalar", "setVariable", 0);
+  } else
+      reportError("Attempt to set non-scalar value", "setVariable", 0);
 }
-
-expr *makeScalar(numeric x) {
-  expr *variable = makeExpr();
-  variable->ptype = SCALAR;
-  variable->x = x;
-  return variable; 
-}
-
-void setScalar(numeric x, expr *var) {
-  if (var->ptype == SCALAR) {
-    var->changed = 1;
-    var->x = x;
-  } else if (var->ptype == CONSTANT) 
-      printf("Tried setting constant.\n");
-}
-
 

@@ -1,7 +1,8 @@
 #ifndef POLYNOMIALS_H
 #define POLYNOMIALS_H
 
-#include "../core.h"
+#include "expressions.h"
+#include "../io/io.h"
 
 
 

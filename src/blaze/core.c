@@ -11,10 +11,12 @@
 
 expr *makeBinOp(expr *a, expr *b, binOpType opType) {
   expr *op = makeExpr();
-  op->ptype = BIN_OP;
-  op->btype = opType;
-  op->operands = (expr**)malloc(sizeof(expr*) * 2); // multiplying 2 because add is binary.
-  op->operands[0] = a, op->operands[1] = b;
+  op->type = BIN_OP;
+  op->value = 0;
+  op->changed = 0;
+  op->subtype.binary_operation_type = opType;
+  op->data.operands = (expr**)malloc(sizeof(expr*) * 2); // multiplying 2 because add is binary.
+  op->data.operands[0] = a, op->data.operands[1] = b;
   return op;
 }
 
@@ -30,9 +32,14 @@ expr *multiply(expr *a, expr *b) {
   return makeBinOp(a, b, MULTIPLY);
 }
 
-// Algebraic 
+expr *divide(expr *a, expr *b) {
+  return makeBinOp(a, b, DIVIDE);
+}
 
-//expr *raise(expr *a, expr *b);
+expr *raise(expr *a, expr *b) {
+  return makeBinOp(a, b, RAISE);
+}
+
 expr *constRaise(expr *a, numeric x) {
   expr *power = makeConstant(x);
   return makeBinOp(a, power, RAISE);

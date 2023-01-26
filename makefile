@@ -6,7 +6,8 @@ SOURCE_FILES = src/main.c \
 							 src/blaze/evaluate/fwdEvaluate.c \
 							 src/blaze/primitives/expressions.c \
 							 src/blaze/primitives/scalar.c \
-							 src/blaze/primitives/polynomials.c
+							 src/blaze/primitives/polynomials.c \
+							 src/blaze/io/io.c
 
 OBJECT_FILES = src/main.o \
 							 src/blaze/core.o \
@@ -14,7 +15,8 @@ OBJECT_FILES = src/main.o \
 							 src/blaze/evaluate/fwdEvaluate.o \
 							 src/blaze/primitives/expressions.o \
 							 src/blaze/primitives/scalar.o \
-							 src/blaze/primitives/polynomials.o
+							 src/blaze/primitives/polynomials.o \
+							 src/blaze/io/io.o
 EXE_NAME = program
 
 # Compilation settings
