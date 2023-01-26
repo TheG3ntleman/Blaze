@@ -1,6 +1,7 @@
 #ifndef PRIMITIVES_H
 #define PRIMITIVES_H
 
+#include <math.h>
 typedef float numeric;
 
 // forward functions

@@ -1,5 +1,17 @@
 Adding ability to construct linear and algebraic expressions.
-Add evaluation function
 
-BETTER TODO THIS LATER: Restructure project to make it more modular
+PENDING:
+  Add polynomials
+  Add more functions/nodes.
+  Add custom memory allocator for cache locality.
+
+BETTER TODO THIS LATER: 
+  2. Finish JIT compiler functionality.
+  3. 
+
+DONE:
+  1. Add evaluation function
+  2. Finish implementing raise
+  3. Restructure project to make it more modular (23-01-26)
+
 

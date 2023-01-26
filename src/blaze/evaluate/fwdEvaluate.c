@@ -1,4 +1,4 @@
-#include "primitives.h"
+#include "fwdEvaluate.h"
 
 
 numeric fwdAdd(numeric x, numeric y) {
@@ -11,7 +11,10 @@ numeric fwdMul(numeric x, numeric y) {
   return x*y;
 }
 numeric fwdRaise(numeric x, numeric y) {
-  return x; // change this later.
+  // Check if y is an integer power
+  // If yes use the stack way or some other way to calculate this.
+  // If no find roots of the equation using newton's method.
+  return pow(x, y);
 }
 
 
