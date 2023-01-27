@@ -3,7 +3,7 @@
 expr *makeConstant(numeric x) {
   expr *constant = makeExpr();
   constant->type = SCALAR;
-  constant->subtype.scalar_type = CONSTANT;
+  constant->subtype = CONSTANT_SCALAR;
   constant->changed = 1;
   constant->value = x;
   return constant; 
@@ -11,7 +11,7 @@ expr *makeConstant(numeric x) {
 
 void setConstant(numeric x, expr *constant) {
   if (constant->type == SCALAR) {
-    if (constant->subtype.scalar_type == CONSTANT) {
+    if (constant->subtype == CONSTANT_SCALAR) {
       constant->value = x;
       constant->changed = 1;
     } else
@@ -23,7 +23,7 @@ void setConstant(numeric x, expr *constant) {
 expr *makeVariable(char *symbol) {
   expr *variable = makeExpr();
   variable->type = SCALAR;
-  variable->subtype.scalar_type = VARIABLE;
+  variable->subtype = VARIABLE_SCALAR;
   variable->value = 0;
   variable->changed = 0;
   variable->data.symbol = symbol;
@@ -32,7 +32,7 @@ expr *makeVariable(char *symbol) {
 
 void setVariable(numeric x, expr *var) {
   if (var->type == SCALAR) {
-    if (var->subtype.scalar_type == VARIABLE) {
+    if (var->subtype == VARIABLE_SCALAR) {
       var->value = x;
       var->changed = 1;
     } else

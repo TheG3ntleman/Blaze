@@ -7,13 +7,18 @@ typedef float numeric;
 
 typedef enum exprType {
   SCALAR,
+  POLYNOMIAL,
   BIN_OP
 } exprType;
-
+/*
 typedef enum scalarType {
   CONSTANT,
   VARIABLE
 } scalarType;
+
+typedef enum polynomialType {
+  SCALAR_POLYNOMIAL 
+} polynomialType;
 
 typedef enum binOpType {
   ADD,
@@ -21,20 +26,42 @@ typedef enum binOpType {
   MULTIPLY,
   DIVIDE,
   RAISE
-} binOpType;
+} binOpType;*/
+
+typedef enum subType {
+  // SCALAR SUBTYPES
+  CONSTANT_SCALAR,
+  VARIABLE_SCALAR,
+  // POLYNOMIAL SUBTYPES
+  CONSTANT_SCALAR_POLYNOMIAL,
+  VARIABLE_SCALAR_POLYNOMIAL,
+  // BINARY OPERATION TYPES
+  ADD_BIN_OP,
+  SUBTRACT_BIN_OP,
+  MULTIPLY_BIN_OP,
+  DIVIDE_BIN_OP,
+  RAISE_BIN_OP
+} subType;
 
 typedef struct expr {
 
   exprType type;
   numeric value;
   char changed; // flag to indicate whether expr has changed or not.
-  union {
+  subType subtype;
+  /*union {
     binOpType binary_operation_type;
     scalarType scalar_type;
-  } subtype;
+    polynomialType polynomial_type;
+  } subtype;*/
   union {
     struct expr **operands;
     char *symbol;
+    // Right now only supports raw numeric
+    // coeffecients but will support
+    // more general expression coeffecients
+    // later.
+    numeric *coeffecients;
   } data;
 
 } expr;

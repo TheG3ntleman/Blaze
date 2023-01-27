@@ -22,9 +22,11 @@ int main() {
   sum = raise(sum, x);
 
   printExpr(sum);
-  printf("Value of expr before eval: %f\n", sum->value);
   evalExpr(sum);
-  printf("Value of expr before eval: %f\n", sum->value);
+  printf("Value of expr: %f\n", sum->value);
+  setConstant(1, x);
+  evalExpr(sum);
+  printf("Value of expr: %f\n", sum->value);
 
 
   expr *k = makeVariable("x");

@@ -11,12 +11,13 @@ void reportError(char *msg, char *location, char errorLevel) {
 
 // IO STUFF
 
+// Add default handlings later.
 void printExprRaw(expr *exp) {
   switch (exp->type) {
     case SCALAR:
-      if (exp->subtype.scalar_type == CONSTANT)
+      if (exp->subtype == CONSTANT_SCALAR)
         printf("%f", exp->value);
-      else if (exp->subtype.scalar_type == VARIABLE)
+      else if (exp->subtype == VARIABLE_SCALAR)
         printf("%s", exp->data.symbol);
       else 
         printf("?s?"); // Bad Scalar
@@ -24,28 +25,25 @@ void printExprRaw(expr *exp) {
     case BIN_OP:
       printf("(");
       printExprRaw(exp->data.operands[0]);
-      switch(exp->subtype.binary_operation_type) {
-        case ADD:
+      switch(exp->subtype) {
+        case ADD_BIN_OP:
           printf("+");
           break;
-        case SUBTRACT:
+        case SUBTRACT_BIN_OP:
           printf("-");
           break;
-        case MULTIPLY:
+        case MULTIPLY_BIN_OP:
           printf("x");
           break;
-        case DIVIDE:
+        case DIVIDE_BIN_OP:
           printf("/");
           break;
-        case RAISE:
+        case RAISE_BIN_OP:
           printf("^");
           break;
       };
       printExprRaw(exp->data.operands[1]);
       printf(")");
-      break;
-    default:
-      printf("?_?"); // Bad unknown
       break;
   }
 }
