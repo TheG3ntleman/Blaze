@@ -22,7 +22,7 @@ EXE_NAME = program
 # Compilation settings
 
 CC = gcc
-C_FLAGS = -Wall -Wextra
+C_FLAGS = -Wall -Wextra -O3
 L_FLAGS = -lstdc++ -lm
 
 # Recipes

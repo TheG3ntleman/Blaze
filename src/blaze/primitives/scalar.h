@@ -10,4 +10,6 @@ void setConstant(numeric x, expr *constant);
 expr *makeVariable(char *symbol);
 void setVariable(numeric x, expr *var);
 
+void deleteScalar(expr *var);
+
 #endif

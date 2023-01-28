@@ -6,5 +6,6 @@
 
 expr *makePolynomial(uint degree, numeric *coeffecient_arr, expr *scalar);
 void setPolynomial(uint degree, numeric *coeffecient_arr, expr *polynomial);
+void deletePolynomial(expr *exp);
 
 #endif

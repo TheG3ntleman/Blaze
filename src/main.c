@@ -1,5 +1,7 @@
 
+#include <time.h>
 #include "blaze/core.h"
+#include "blaze/evaluate/evaluate.h"
 #include "blaze/primitives/scalar.h"
 
 /*
@@ -8,40 +10,28 @@
  * */
 int main() {
 
-  /*int x;
-  int y = x*x*x;
-  int z = 3*x*x;
-  int z = 3 ; // x = 1;*/
+  uint a = 1, b = 1;
+  //scanf("%u %u", &a, &b);
 
-  expr *x = makeConstant(2);
-  expr *y = makeConstant(3);
-  expr *z = makeConstant(4);
+  clock_t t;
+  for (a = 1; a < 1; a *= 2) {
+    t = clock();
+    for (uint i = 0; i < a; i++) {
+      expr *x = makeConstant(0);
+      for (uint j = 0; j < b; j++) {
+        expr *y = makeConstant(j + 1);
+        x = add(y, x); 
+      }
+      evalExpr(x);
+      //printf("x has a value of %f\n", x->value);
+      deleteExpr(x);
+    }
+    t = clock() - t;
+    double time_taken = ((double)t)/CLOCKS_PER_SEC;
+    printf("%u,%lf\n", a, time_taken);
+  }
 
-  expr *sum = add(x, y), *quotient = divide(x, y);
-  sum = multiply (z, sum);
-  sum = raise(sum, x);
-
-  printExpr(sum);
-  evalExpr(sum);
-  printf("Value of expr: %f\n", sum->value);
-  setConstant(1, x);
-  evalExpr(sum);
-  printf("Value of expr: %f\n", sum->value);
-
-
-  expr *k = makeVariable("x");
-  sum = add(sum, k);
-  printExpr(sum);
-
-  printf("Expression and value for quotient:\n");
-  printExpr(quotient);
-  evalExpr(quotient); // Buggy here
-  printf("quotient = %f\n", quotient->value);
- 
-  deleteExpr(sum);
-  deleteExpr(quotient);
-  // output of this code: ((300.000000x(3.000000+4.000000))^'2.000000')
+  printf("Finished.\n");
   
-
   return 0;
 }

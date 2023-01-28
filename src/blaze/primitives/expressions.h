@@ -10,31 +10,13 @@ typedef enum exprType {
   POLYNOMIAL,
   BIN_OP
 } exprType;
-/*
-typedef enum scalarType {
-  CONSTANT,
-  VARIABLE
-} scalarType;
-
-typedef enum polynomialType {
-  SCALAR_POLYNOMIAL 
-} polynomialType;
-
-typedef enum binOpType {
-  ADD,
-  SUBTRACT,
-  MULTIPLY,
-  DIVIDE,
-  RAISE
-} binOpType;*/
 
 typedef enum subType {
   // SCALAR SUBTYPES
   CONSTANT_SCALAR,
   VARIABLE_SCALAR,
   // POLYNOMIAL SUBTYPES
-  CONSTANT_SCALAR_POLYNOMIAL,
-  VARIABLE_SCALAR_POLYNOMIAL,
+  SUBTYPE_POLYNOMIAL,
   // BINARY OPERATION TYPES
   ADD_BIN_OP,
   SUBTRACT_BIN_OP,
@@ -43,17 +25,24 @@ typedef enum subType {
   RAISE_BIN_OP
 } subType;
 
+// SPECIAL DATA STRUCTS (COULD BE AVOIDED HERE 
+// AND WRITTEN  IN CORRESPODNING PRIMITIVE FILES
+// If data field becomes void*, however, would
+// that fuck up debugging?)
+
+typedef struct polynomialInfo {
+  unsigned int degree;
+  numeric *coeffecients;
+} polynomialInfo;
+
+// EXPR STRUCT
+
 typedef struct expr {
 
   exprType type;
   numeric value;
   char changed; // flag to indicate whether expr has changed or not.
   subType subtype;
-  /*union {
-    binOpType binary_operation_type;
-    scalarType scalar_type;
-    polynomialType polynomial_type;
-  } subtype;*/
   union {
     struct expr **operands;
     char *symbol;
@@ -61,13 +50,12 @@ typedef struct expr {
     // coeffecients but will support
     // more general expression coeffecients
     // later.
-    numeric *coeffecients;
+    polynomialInfo *polynomialInfo;
   } data;
 
 } expr;
 
 expr *makeExpr();
-void deleteExpr(expr *exp);
 
 
 #endif

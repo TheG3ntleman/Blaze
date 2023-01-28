@@ -1,5 +1,4 @@
 #include "evaluate.h"
-#include "fwdEvaluate.h"
 
 void evalExpr(expr *exp) {
   switch (exp->type) {
@@ -9,6 +8,7 @@ void evalExpr(expr *exp) {
     case BIN_OP:
       evalExpr(exp->data.operands[0]);
       evalExpr(exp->data.operands[1]);
+
       if (exp->data.operands[1]->changed == 0 && exp->data.operands[0]->changed == 0 && exp->changed == 0) {
         //printf("Not re-evaluating.\n");
         break;
@@ -37,4 +37,21 @@ void evalExpr(expr *exp) {
   };
 }
 
+void deleteExpr(expr *exp) {
+  // Do the full tree generality shit later.
+  
+  // Could just traverse expression tree and
+  // call custom delete function from 
+  // corresponding primitive file.
+  switch(exp->type) {
+    case SCALAR:
+      deleteScalar(exp);
+      break;
+    case BIN_OP:
+      deleteScalar(exp->data.operands[0]);
+      deleteScalar(exp->data.operands[1]);
+      free(exp); 
+      break;
+  };
+}
 

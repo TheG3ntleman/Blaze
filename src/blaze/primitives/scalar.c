@@ -41,3 +41,7 @@ void setVariable(numeric x, expr *var) {
       reportError("Attempt to set non-scalar value", "setVariable", 0);
 }
 
+void deleteScalar(expr *var) {
+  free(var);
+}
+

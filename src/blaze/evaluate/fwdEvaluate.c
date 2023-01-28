@@ -11,7 +11,6 @@ numeric fwdMul(numeric x, numeric y) {
   return x*y;
 }
 numeric fwdDiv(numeric x, numeric y) {
-  printf("x: %f, y: %f\n", x, y);
   if (y != 0)
     return (x/y);
   else 

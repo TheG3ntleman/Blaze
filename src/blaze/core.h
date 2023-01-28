@@ -2,8 +2,8 @@
 #define CORE_HPP
 
 // Primitive includes
+#include "evaluate/evaluate.h"
 #include "primitives/expressions.h"
-#include "primitives/scalar.h"
 
 // other includes
 #include "io/io.h"
