@@ -1,27 +1,16 @@
-#ifndef CORE_HPP
-#define CORE_HPP
+#ifndef CORE_H
+#define CORE_H
 
-// Primitive includes
+#include <stdio.h>
+
+#include "primitives/expression.h"
+#include "primitives/delete.h"
+#include "primitives/scalar.h"
+#include "operations/binary_operation.h"
+#include "operations/add.h"
 #include "evaluate/evaluate.h"
-#include "primitives/expressions.h"
 
-// other includes
-#include "io/io.h"
 
-void evalExpr(expr *exp);
 
-// Bin ops 
-
-// Basic arithmetic
-
-expr *add(expr *a, expr *b);
-expr *subtract(expr *a, expr *b);
-expr *multiply(expr *a, expr *b);
-expr *divide(expr *a, expr *b);
-
-// Algebraic
-
-expr *raise(expr *a, expr *b);
-expr *constRaise(expr *a, numeric x);
 
 #endif

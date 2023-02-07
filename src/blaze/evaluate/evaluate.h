@@ -1,12 +1,10 @@
 #ifndef EVALUATE_H
 #define EVALUATE_H
 
-#include "../primitives/expressions.h"
-#include "../primitives/scalar.h"
-#include "../primitives/polynomials.h"
-#include "fwdEvaluate.h"
+#include "../primitives/expression.h"
+#include "../operations/binary_operation.h"
+#include "../operations/add.h"
 
-void evalExpr(expr *exp);
-void deleteExpr(expr *exp);
+void evaluate(expr *expression); 
 
 #endif

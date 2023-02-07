@@ -1,15 +1,11 @@
 #ifndef SCALAR_H
 #define SCALAR_H
 
-#include "expressions.h"
-#include "../io/io.h"
+#include "expression.h"
 
-expr *makeConstant(numeric x);
-void setConstant(numeric x, expr *constant);
+expr *makeScalar(char *symbol);
 
-expr *makeVariable(char *symbol);
-void setVariable(numeric x, expr *var);
-
-void deleteScalar(expr *var);
+void setScalar(expr *scalar, numeric x);
+char* getScalarData(expr *scalar); // Returns scalar symbol that's it
 
 #endif

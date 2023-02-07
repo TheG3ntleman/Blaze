@@ -29,8 +29,8 @@ EXE_NAME = program
 # Compilation settings
 
 CC = gcc
-C_FLAGS = -Wall -Wextra -O3
-L_FLAGS = -lstdc++ -lm
+C_FLAGS = -Wall -Wextra -g -O0
+L_FLAGS = -lstdc++ -lm -g
 
 # Recipes
 
@@ -38,6 +38,9 @@ all: build
 	./$(EXE_NAME)
 
 build: $(EXE_NAME)
+
+debug: $(OBJECT_FILES)
+	$(CC) $^ $(L_FLAGS) -o $@
 
 $(EXE_NAME): $(OBJECT_FILES)
 	$(CC) $^ $(L_FLAGS) -o $@
@@ -48,7 +51,7 @@ $(EXE_NAME): $(OBJECT_FILES)
 .PHONY: clean oclean
 
 clean:
-	rm $(OBJECT_FILES) $(EXE_NAME) 
+	rm $(OBJECT_FILES) $(EXE_NAME) debug
 
 oclean:
-	rm $(EXE_NAME) 
+	rm $(EXE_NAME) debug
