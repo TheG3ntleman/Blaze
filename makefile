@@ -5,8 +5,14 @@ SOURCE_FILES = src/main.c \
 							 src/blaze/primitives/expression.c \
 							 src/blaze/primitives/scalar.c \
 							 src/blaze/primitives/delete.c \
+							 src/blaze/operations/unary_operation.c \
+							 src/blaze/operations/negate.c \
 							 src/blaze/operations/binary_operation.c \
 							 src/blaze/operations/add.c \
+							 src/blaze/operations/subtract.c \
+							 src/blaze/operations/multiply.c \
+							 src/blaze/operations/divide.c \
+							 src/blaze/operations/raise.c \
 							 src/blaze/evaluate/evaluate.c \
 							 src/blaze/err.c \
 							 src/tests/feature_test.c \
@@ -17,8 +23,14 @@ OBJECT_FILES = src/main.o \
 							 src/blaze/primitives/expression.o \
 							 src/blaze/primitives/scalar.o \
 							 src/blaze/primitives/delete.o\
+							 src/blaze/operations/unary_operation.o \
+							 src/blaze/operations/negate.o \
 							 src/blaze/operations/binary_operation.o \
 							 src/blaze/operations/add.o \
+							 src/blaze/operations/subtract.o \
+							 src/blaze/operations/multiply.o \
+							 src/blaze/operations/divide.o \
+							 src/blaze/operations/raise.o \
 							 src/blaze/evaluate/evaluate.o \
 							 src/blaze/err.o \
 							 src/tests/feature_test.o \
@@ -30,7 +42,7 @@ EXE_NAME = program
 
 CC = gcc
 C_FLAGS = -Wall -Wextra -O3
-L_FLAGS = -lstdc++ -lm
+L_FLAGS = -lm
 
 # Recipes
 

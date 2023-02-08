@@ -11,6 +11,6 @@ expr* makeBinaryOperation(expr *operand1, expr *operand2) {
   return operation;
 }
 
-expr** getBinaryOperationData(expr *binary_operation) {
+inline expr** getBinaryOperationData(expr *binary_operation) {
   return (expr **)binary_operation->data;
 }

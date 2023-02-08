@@ -1,11 +1,13 @@
 #include "tests.h"
 
-#define NUM_TEST_ITERATIONS 1000
-#define NUM_NODES 100000 // Dont make this too high to avoid stack overflows. 
+#define NUM_TEST_ITERATIONS 100
+#define NUM_NODES 100000 // Dont make this too high (more than 10^5) to avoid stack overflows. 
 
 void performance_test() {
   printf("\n\nRunning performance test.\n\n");
  
+  // Make TEST-0: Same as TEST-I using unary operation tree instead of binary.
+
   // TEST-I: Graph contruction
 
   clock_t start_time = clock();
