@@ -24,6 +24,10 @@ void evaluate (expr *expression) {
           evaluate(operand);
           forwardNegate(expression, operand);
           break;
+        case EXP_RAISE_UNARY_OPERATION:
+          evaluate(operand);
+          forwardExpRaise(expression, operand);
+          break;
       }
       expression->update = 0;
       break;

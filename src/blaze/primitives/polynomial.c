@@ -10,11 +10,11 @@ expr *makePolynomial(expr* variable, uint degree, numeric *coeffecient_array) {
 
   uint non_zero_coeffecients = 0;
   for (uint i = 0; i < degree; i++) {
-    if (coeffecient_array[i] == 0)
+    if (coeffecient_array[i] != 0)
       non_zero_coeffecients++;
   }
 
-  //if (non_zero_coeffecients > degree/2) {
+  if (non_zero_coeffecients > degree/2) {
     // Will store coeffecients in array
     polynomial->sub_type = FULL_POLYNOMIAL;
     polynomial->data = malloc(sizeof(polynomialData));
@@ -24,7 +24,9 @@ expr *makePolynomial(expr* variable, uint degree, numeric *coeffecient_array) {
     data->variable = variable;
     for (uint i = 0; i < degree; i++) 
       data->coeffecients[i] = coeffecient_array[i];
-  //}
+  } else {
+
+  }
 
   return polynomial;
 }

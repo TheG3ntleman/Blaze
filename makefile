@@ -8,6 +8,7 @@ SOURCE_FILES = src/main.c \
 							 src/blaze/primitives/delete.c \
 							 src/blaze/operations/unary_operation.c \
 							 src/blaze/operations/negate.c \
+							 src/blaze/operations/exp.c \
 							 src/blaze/operations/binary_operation.c \
 							 src/blaze/operations/add.c \
 							 src/blaze/operations/subtract.c \
@@ -27,6 +28,7 @@ OBJECT_FILES = src/main.o \
 							 src/blaze/primitives/delete.o\
 							 src/blaze/operations/unary_operation.o \
 							 src/blaze/operations/negate.o \
+							 src/blaze/operations/exp.o \
 							 src/blaze/operations/binary_operation.o \
 							 src/blaze/operations/add.o \
 							 src/blaze/operations/subtract.o \

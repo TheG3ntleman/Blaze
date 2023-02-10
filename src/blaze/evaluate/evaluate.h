@@ -6,6 +6,7 @@
 
 #include "../operations/unary_operation.h"
 #include "../operations/negate.h"
+#include "../operations/exp.h"
 #include "../operations/binary_operation.h"
 #include "../operations/add.h"
 #include "../operations/subtract.h"
