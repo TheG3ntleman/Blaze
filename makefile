@@ -4,6 +4,7 @@ SOURCE_FILES = src/main.c \
 							 src/blaze/core.c \
 							 src/blaze/primitives/expression.c \
 							 src/blaze/primitives/scalar.c \
+							 src/blaze/primitives/polynomial.c \
 							 src/blaze/primitives/delete.c \
 							 src/blaze/operations/unary_operation.c \
 							 src/blaze/operations/negate.c \
@@ -22,6 +23,7 @@ OBJECT_FILES = src/main.o \
 							 src/blaze/core.o \
 							 src/blaze/primitives/expression.o \
 							 src/blaze/primitives/scalar.o \
+							 src/blaze/primitives/polynomial.o \
 							 src/blaze/primitives/delete.o\
 							 src/blaze/operations/unary_operation.o \
 							 src/blaze/operations/negate.o \
@@ -41,7 +43,7 @@ EXE_NAME = program
 # Compilation settings
 
 CC = gcc
-C_FLAGS = -Wall -Wextra -O3
+C_FLAGS = -Wall -Wextra -O3 
 L_FLAGS = -lm
 
 # Recipes

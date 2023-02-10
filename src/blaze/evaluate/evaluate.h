@@ -2,6 +2,8 @@
 #define EVALUATE_H
 
 #include "../primitives/expression.h"
+#include "../primitives/polynomial.h"
+
 #include "../operations/unary_operation.h"
 #include "../operations/negate.h"
 #include "../operations/binary_operation.h"

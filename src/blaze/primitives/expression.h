@@ -9,6 +9,7 @@ typedef float numeric;
 
 typedef enum exprType {
   SCALAR,
+  POLYNOMIAL,
   UNARY_OPERATION,
   BINARY_OPERATION
 } exprType;
@@ -16,6 +17,8 @@ typedef enum exprType {
 typedef enum exprSubType {
   VARIABLE_SCALAR,
   CONSTANT_SCALAR,
+  FULL_POLYNOMIAL,
+  SPARSE_POLYNOMIAL,
   NEGATE_UNARY_OPERATION,
   ADD_BINARY_OPERATION,
   SUBTRACT_BINARY_OPERATION,

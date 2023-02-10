@@ -48,5 +48,13 @@ void feature_test() {
   evaluate(z);
   printf("x:%f ^ y:%f = z:%f\n", x->value, y->value, z->value);
   deleteExpr(z);
+
+  // Test polynomial functionality here.
+  x = makeScalar("x");
+  setScalar(x, 1);
+  numeric coeffs[] = {1, 2, 3}; 
+  y = makePolynomial(x, 3, coeffs);
+  evaluate(y);
+  printf("the polynomial has evaluated to %f\n", y->value);
 }
 
