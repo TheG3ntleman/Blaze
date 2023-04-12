@@ -1,11 +1,7 @@
-#include "blaze/core.h"
-#include "tests/tests.h"
-
+#include <stdio.h>
+#include "blaze/blaze.h"
 
 int main() {
-
-  feature_test();
-  performance_test();
 
   return 0;
 }
